@@ -1,7 +1,10 @@
 let limos = createSlimes(5);
 
 function update() {
-    limos.forEach(slime => slime.updatePos())
+    limos.forEach(slime => {
+        slime.updateTemp(temp)
+        slime.updatePos();
+    })
 }
 
 function draw() {
@@ -13,7 +16,7 @@ function draw() {
 
 
 let lastFrameTimeMs = 0;
-let maxFPS = 30;
+let maxFPS = 60;
 function mainLoop(timestamp) {
     if (timestamp < lastFrameTimeMs + (1000 / maxFPS)) {
         requestAnimationFrame(mainLoop);

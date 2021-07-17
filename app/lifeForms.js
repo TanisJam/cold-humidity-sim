@@ -4,7 +4,7 @@ class Life {
     constructor(width, height, temp, humi) {
         this.width = width;
         this.height = height;
-        this.temp = parseInt(temp);
+        this.temp = temp;
         this.humi = parseInt(humi);
         this.pos = {
             x: this.randomPos(0, boardDimensions.x),
@@ -21,46 +21,52 @@ class Life {
     randomVel(min, max) {
         return Math.random() * (max - min) + min;
     }
+    updateTemp(temp) {
+        this.temp = temp;
+    }
+    calcDimensions() {
+        return {
+            width: ((temp / 2 + 75) / 100) * this.width,
+            height: (((temp / 5) * 2 + 80) / 100) * this.height
+        }
+    }
     updatePos() {
+
+
         // add position in x
         // if position in x is outside the boundaries, set position to boundarie and multiply vel by -1
         let dimensions = this.calcDimensions();
+        let factor = +((this.temp / 100) -0.5) + 1;
+        console.log(factor);
 
-        this.pos.x += this.vel.x;
-        if (this.pos.x > (boardDimensions.x + (this.width / 2) / 60)) {
-            this.pos.x = boardDimensions.x + (this.width / 2) / 60;
-            this.vel.x *= -1;
+        this.pos.x = this.pos.x + this.vel.x * factor;
+        if (this.pos.x > (boardDimensions.x + (dimensions.width / 60) / 2)) {
+            this.pos.x = boardDimensions.x + (dimensions.width / 60) / 2;
+            this.vel.x = this.vel.x * -1;
         }
-        if (this.pos.x < (0 - (this.width / 2) / 60)) {
-            this.pos.x = 0 - (this.width / 2) / 60;
-            this.vel.x *= -1;
+        if (this.pos.x < (0 - (dimensions.width / 60) / 2)) {
+            this.pos.x = 0 - (dimensions.width / 60) / 2;
+            this.vel.x = this.vel.x * -1;
         }
 
-        this.pos.y += this.vel.y;
-        if (this.pos.y > (boardDimensions.y + (this.height / 2) / 50)) {
-            this.pos.y = boardDimensions.y + (this.height / 2) / 50;
-            this.vel.y *= -1;
+        this.pos.y = this.pos.y + this.vel.y * factor;
+        if (this.pos.y > (boardDimensions.y + (dimensions.height / 2) / 50)) {
+            this.pos.y = boardDimensions.y + (dimensions.height / 2) / 50;
+            this.vel.y = this.vel.y * -1;
         }
-        if (this.pos.y < (0 - (this.height / 2) / 50)) {
-            this.pos.y = 0 - (this.height / 2) / 50;
-            this.vel.y *= -1;
+        if (this.pos.y < (0 - (dimensions.height / 2) / 50)) {
+            this.pos.y = 0 - (dimensions.height / 2) / 50;
+            this.vel.y = this.vel.y * -1;
         }
     }
+
 }
 
 class Slime extends Life {
     constructor(width, height, color) {
         super(width, height, temp, humi);
         this.color = color;
-        this.factorWidth = (temp / 2 + 75) / 100;
-        this.factorHeight = ((temp / 5) * 2 + 80) / 100;
-    }
 
-    calcDimensions() {
-        return {
-            width: ((temp / 2 + 75) / 100) * this.width,
-            height: (((temp / 5) * 2 + 80) / 100) * this.height
-        }
     }
 
     getHtml() {
