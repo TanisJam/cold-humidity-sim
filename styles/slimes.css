@@ -25,4 +25,5 @@
     position: absolute;
     left: calc(30px + var(--pos-x) * 60px - var(--slime-width) * 1px / 2);
     top: calc(30px + var(--pos-y) * 60px - var(--slime-height) * 1px / 2);
+    box-shadow: 2px -2px 8px 4px rgba(0, 0, 0, 0.3) inset, -2px 2px 3px 1px rgba(0, 0, 0, 0.3);
 }
