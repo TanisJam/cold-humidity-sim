@@ -1,20 +1,32 @@
-let color = Math.floor(Math.random() * (9 - 1) + 1);
+let limos = createSlimes(5);
 
-let limo1 = new Slime(30, 26, color, temp, humi);
+function update() {
+    limos.forEach(slime => slime.updatePos())
+}
 
-let limos = [limo1];
-
-
-
-function addSlimes(slimes) {
-    slimes.forEach((slime, index) => {
-
+function draw() {
+    board.innerHTML = ('');
+    limos.forEach(slime => {
         board.appendChild(slime.getHtml());
-        
     });
 }
 
 
+let lastFrameTimeMs = 0;
+let maxFPS = 30;
+function mainLoop(timestamp) {
+    if (timestamp < lastFrameTimeMs + (1000 / maxFPS)) {
+        requestAnimationFrame(mainLoop);
+        return;
+    }
+    lastFrameTimeMs = timestamp;
+
+    update();
+    draw();
+    requestAnimationFrame(mainLoop);
+}
+
+requestAnimationFrame(mainLoop)
 
 
-addSlimes(limos);
+

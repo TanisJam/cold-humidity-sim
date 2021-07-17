@@ -10,11 +10,7 @@
     --color-9: hsl(150, 100%, 40%);
 }
 
-
-
 .slime {
-    --slime-width: var(--slime-width-base);
-    --slime-height: var(--slime-height-base);
     width: calc(var(--slime-width) * 1px);
     height: calc(var(--slime-height) * 1px);
     border-radius: 80% 80% 60% 60%;
@@ -22,19 +18,4 @@
     position: absolute;
     left: calc(30px + var(--pos-x) * 60px - var(--slime-width) * 1px / 2);
     top: calc(30px + var(--pos-y) * 60px - var(--slime-height) * 1px / 2);
-}
-#limo-0 {
-    --slime-width-base: 30;
-    --slime-height-base: 26;
-    --slime-color: var(--color-1);
-    --pos-x: 0;
-    --pos-y: 0;
-}
-
-#limo-1 {
-    --slime-width-base: 30;
-    --slime-height-base: 26;
-    --slime-color: var(--color-5);
-    --pos-x: 1;
-    --pos-y: 1;
 }
