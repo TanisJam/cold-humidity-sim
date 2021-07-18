@@ -12,11 +12,12 @@
  - To do that I found easiest use HSL();
  - Basic main loop with requestAnimationFrame() funtion.
  - When temperature change the behavior and size of the slimes change.
+ - Added animations to make slimes move all around and collide with each other and the walls.
  - A lot of fun.
 
 ## What I want to do:
- - [ ] Add behavior for the humidity slider.
- - [ ] Make it working fine on mobile.
+ - [x] Add behavior for the humidity slider.
+ - [ ] Make it work nice on mobile.
 
 
 [Live version](https://tanisjam.github.io/cold-humidity-sim/)

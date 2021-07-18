@@ -20,10 +20,10 @@
 .slime {
     width: calc(var(--slime-width) * 1px);
     height: calc(var(--slime-height) * 1px);
-    border-radius: 80% 80% 60% 60%;
+    /*border-radius: 80% 80% 60% 60%;*/
     background-color: var(--slime-color);
     position: absolute;
-    left: calc(30px + var(--pos-x) * 60px - var(--slime-width) * 1px / 2);
-    top: calc(30px + var(--pos-y) * 60px - var(--slime-height) * 1px / 2);
+    left: calc( calc(calc(var(--slime-width) * 1px) / 2) + var(--pos-x) * 60px - var(--slime-width) * 1px / 2);
+    top: calc( calc(calc(var(--slime-height) * 1px) / 2) + var(--pos-y) * 60px - var(--slime-height) * 1px / 2);
     box-shadow: 2px -2px 8px 4px rgba(0, 0, 0, 0.3) inset, -2px 2px 3px 1px rgba(0, 0, 0, 0.3);
 }
